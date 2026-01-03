@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { getLikedcArticlesbyTopic } from "@/lib/data/deutsch";
+import { getLikedArticlesbyTopic } from "@/lib/data/deutsch";
 import { TopicArticleList } from "@/components/topic-article-list";
 
 export default async function TopicPage({
@@ -10,7 +10,7 @@ export default async function TopicPage({
   const { topic } = await params;
   const supabase = await createClient();
 
-  const { data, error } = await getLikedcArticlesbyTopic(supabase, topic);
+  const { data, error } = await getLikedArticlesbyTopic(supabase, topic);
 
   if (error) return <p>{error.message}</p>;
   if (!data || data.length === 0) return <p>No articles found for {topic}</p>;
