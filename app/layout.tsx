@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 import "./globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -9,8 +10,8 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  title: "NochEinWort",
+  description: "Personal reading and progress dashboard",
 };
 
 const geistSans = Geist({
@@ -29,11 +30,16 @@ export default function RootLayout({
       <body className={`${geistSans.className} antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           {children}
+
+          {/* Floating theme switcher */}
+          <div className="fixed bottom-6 right-6 z-50">
+            <ThemeSwitcher />
+          </div>
         </ThemeProvider>
       </body>
     </html>
