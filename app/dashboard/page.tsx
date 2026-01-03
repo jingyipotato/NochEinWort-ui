@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { getLikedArticles } from "@/lib/data/deutsch";
 import Link from "next/link";
 
 const getProgressColor = (percentage: number) => {
@@ -10,10 +11,7 @@ const getProgressColor = (percentage: number) => {
 export default async function DashboardPage() {
   const supabase = await createClient();
 
-  const { data, error } = await supabase
-    .from("deutsch")
-    .select("id, topic, completed_at")
-    .eq("feedback", "up");
+  const { data, error } = await getLikedArticles(supabase);
 
   if (error) return <p>{error.message}</p>;
   if (!data || data.length === 0) return <p>No liked articles yet.</p>;
