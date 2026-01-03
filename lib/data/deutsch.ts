@@ -18,3 +18,11 @@ export async function getLikedArticlesbyTopic(
     .eq("topic", topic)
     .order("completed_at", { ascending: true, nullsFirst: true });
 }
+
+export async function getCompletedArticles(supabase: SupabaseClient) {
+  return supabase
+    .from("deutsch")
+    .select("id, title_en, topic, completed_at")
+    .not("completed_at", "is", null)
+    .order("completed_at", { ascending: false });
+}
