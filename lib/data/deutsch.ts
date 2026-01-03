@@ -7,7 +7,7 @@ export async function getLikedArticles(supabase: SupabaseClient) {
     .eq("feedback", "up");
 }
 
-export async function getLikedcArticlesbyTopic(
+export async function getLikedArticlesbyTopic(
   supabase: SupabaseClient,
   topic: string
 ) {
