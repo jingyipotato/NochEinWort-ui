@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
-import { ThemeSwitcher } from "@/components/theme-switcher";
 import "./globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -35,11 +34,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
-
-          {/* Floating theme switcher */}
-          <div className="fixed bottom-6 right-6 z-50">
-            <ThemeSwitcher />
-          </div>
         </ThemeProvider>
       </body>
     </html>

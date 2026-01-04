@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { LogoutButton } from "@/components/logout-button";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 import Link from "next/link";
 
 export default async function DashboardLayout({
@@ -19,7 +20,10 @@ export default async function DashboardLayout({
     <div className="min-h-screen flex flex-col bg-background text-card-foreground">
       {/* Top bar */}
       <header className="h-14 border-b flex items-center justify-end px-6">
-        <LogoutButton />
+        <div className="flex items-center gap-2">
+          <ThemeSwitcher />
+          <LogoutButton />
+        </div>
       </header>
 
       {/* Body */}
